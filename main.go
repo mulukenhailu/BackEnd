@@ -22,7 +22,9 @@ func main() {
 	var tk = auth.NewToken()
 	var service = handler.NewProfile(rd, tk)
 
-	r.POST("/", handler.PublicUser)
+	r.GET("/", handler.PublicUser)
 	r.POST("/login", service.Login)
+	r.POST("/logout", service.Logout)
+
 	r.Run(":3001")
 }
